@@ -1,6 +1,31 @@
-# FalaAI API — PHP SDK
+# FalaAI API - PHP SDK
 
-Official PHP SDK for the **FalaAI API** — AI-powered call transcription, diagnosis and compliance auditing.
+[![version](https://img.shields.io/badge/version-1.21.47-blue)](https://packagist.org/packages/actiontecbr/falaai-api)
+[![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/ActionTecBr/falaai-api-php/blob/main/LICENSE)
+[![build](https://github.com/ActionTecBr/falaai-api-php/actions/workflows/ci.yml/badge.svg)](https://github.com/ActionTecBr/falaai-api-php/actions/workflows/ci.yml)
+
+Official PHP SDK for the **FalaAI API**.
+
+## What is FalaAI API?
+
+FalaAI API turns conversations into auditable business intelligence, in three steps:
+
+1. **Transcribe** - audio (calls, voice notes, meetings) to text, with speaker separation.
+2. **Diagnose** - summary, reason, recommended action, topic and sentiment per conversation.
+3. **Audit compliance** - risk score and violations against **COPC CX** and **ISO 18295-1**.
+
+It works with phone calls, WhatsApp, Telegram, chat, email, PDF and images.
+Three REST endpoints, one API key, no setup.
+
+## Who it's for
+
+| Role | What they get |
+| --- | --- |
+| **Contact Center / Quality** | Audit 100% of conversations instead of a sample |
+| **Compliance / Legal** | Forensic, auditable evidence for audits and disputes |
+| **CX / Operations** | Risk score, sentiment and reason for every conversation |
+| **Developers** | One typed SDK, three REST endpoints, one API key |
+| **Data / BI** | Clean, typed JSON ready for your database or BI tool |
 
 ## Install
 
@@ -12,53 +37,65 @@ composer require actiontecbr/falaai-api
 
 ```php
 <?php
-require 'vendor/autoload.php';
 
-$config = FalaAI\Configuration::getDefaultConfiguration()
-    ->setHost('https://api01-falaai.action.tec.br')
-    ->setAccessToken('fai_xxx');
+require "vendor/autoload.php";
 
-$health = new FalaAI\Api\HealthApi(null, $config);
-[$data, $status] = $health->healthCheckWithHttpInfo();
-echo $data->getStatus(), ' ', $status, PHP_EOL;
+use FalaAI\Api\SpeechApi;
+use FalaAI\Configuration;
+
+$config = (new Configuration())
+    ->setHost("api01-falaai.action.tec.br")
+    ->setScheme("https")
+    ->setAccessToken("fai_xxxxxx");
+
+$speech = new SpeechApi(null, $config);
+
+[$response, $status] = $speech->createTranscriptionV1AudioTranscriptionsPostWithHttpInfo(
+    new \SplFileObject("call.mp3"),
+    "falaai-transcribe-1",
+    "pt"
+);
+
+echo $response->getText();
 ```
+
+## Use cases
+
+- Call and voice-note **transcription** with speaker separation
+- **Contact center quality assurance (QA)** automation
+- **Compliance auditing** against **COPC CX** and **ISO 18295-1**
+- **Risk detection** - churn risk, legal threats, escalation
+- **WhatsApp, Telegram and chat** conversation analysis
+- **CRM and help desk** enrichment
+- **LGPD**-aware handling of customer conversations
+
+## Where it fits
+
+Common PHP stacks in contact center, CRM and help desk - if you build on any of these, the SDK drops in:
+
+WordPress / WooCommerce - SuiteCRM - Vtiger - Bitrix24 (self-hosted) - Perfex - FreePBX / Asterisk
+
+> Product names are trademarks of their respective owners, listed as common stacks in this ecosystem. No partnership is implied.
 
 ## Endpoints
 
 | Method | Path | Description |
-|---|---|---|
-| POST | `/v1/audio/transcriptions` | Audio to text (diarization, audio events) |
-| POST | `/v1/analyze/diagnostic` | Conversation analysis |
-| POST | `/v1/analyze/auditoriaRisco` | Compliance audit (risk) |
-| GET | `/v1/usage/log` | Usage log |
-| GET | `/v1/usage/by-key` | Usage grouped by API key |
-| GET/POST | `/v1/webhooks` | List / create webhooks |
-| PUT/DELETE | `/v1/webhooks/{webhook_id}` | Update / delete webhook |
-| GET/POST | `/v1/email-alerts` | List / create email alerts |
-| PUT/DELETE | `/v1/email-alerts/{alert_id}` | Update / delete email alert |
-| GET | `/api/version` | API version |
-| GET/HEAD | `/v1/health` | Health check |
+| --- | --- | --- |
+| `POST` | `/v1/audio/transcriptions` | Audio to text, with speaker separation |
+| `POST` | `/v1/analyze/diagnostic` | Conversation analysis - summary, reason, action, topic, sentiment |
+| `POST` | `/v1/analyze/auditoriaRisco` | Compliance audit - risk score and violations |
 
-## Authentication
+All endpoints require `Authorization: Bearer fai_xxxxxx`.
+Full reference: <https://api01-falaai.action.tec.br/docs>
 
-Authenticated endpoints require an API key in the `Authorization` header:
+## Links
 
-```
-Authorization: Bearer fai_xxx
-```
-
-Get your API key at [falaai.action.tec.br/api](https://falaai.action.tec.br/api).
-
-## Tests
-
-An end-to-end suite (19 tests) lives in `tests/e2e/` and runs against the live API:
-
-```bash
-FALAAI_E2E_BASE=https://api01-falaai.action.tec.br \
-FALAAI_TEST_KEY=fai_xxx \
-vendor/bin/phpunit
-```
+- **Product:** <https://falaai.action.tec.br/api>
+- **API reference:** <https://api01-falaai.action.tec.br/docs>
+- **Get an API key:** <https://falaai.action.tec.br/api/auth>
+- **Package (Packagist):** <https://packagist.org/packages/actiontecbr/falaai-api>
+- **Source:** <https://github.com/ActionTecBr/falaai-api-php>
 
 ## License
 
-[MIT](LICENSE) © Action Tec Br
+MIT (c) 2026 Action Tec Br - see [LICENSE](LICENSE).
