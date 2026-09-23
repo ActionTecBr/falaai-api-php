@@ -1,0 +1,55 @@
+# AuditoriaRiscoDetectionItemV2
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**turn** | **int** | Turn number | [optional]
+**interlocutor** | **string** | Speaker | [optional]
+**role** | **string** | Role | [optional]
+**timestamp_start_s** | **float** | Start (s) | [optional]
+**timestamp_end_s** | **float** | End (s) | [optional]
+**timestamp_formatted** | **string** | Formatted timestamp | [optional]
+**term_text** | **string** | Detected term | [optional]
+**suggested_term_for_bank** | **mixed** | Suggested term for bank | [optional]
+**category** | **string** | Category code | [optional]
+**category_label** | **string** | Category label (i18n) |
+**category_color** | **string** | Category color | [optional]
+**category_icon** | **string** | Category icon | [optional]
+**criticality** | **string** | Criticality | [optional]
+**category_threshold** | **float** | Category threshold | [optional]
+**category_type** | **string** | Category type | [optional]
+**category_group** | **string** | Category group label (i18n) |
+**nature** | **string** | Nature | [optional]
+**llm_confidence** | **float** | LLM confidence | [optional]
+**reason** | **string** | Reason | [optional]
+**is_valid_context** | **bool** | Valid context | [optional]
+**risk_probability** | **float** | Risk probability | [optional]
+**risk_impact** | **float** | Risk impact | [optional]
+**category_weight** | **float** | Category weight | [optional]
+**turn_sentiment** | **string** | Turn sentiment | [optional]
+**intensity** | **mixed** | Intensity | [optional]
+**mod_applied** | **float** | Total modifier applied | [optional]
+**mac_applied** | **float** | Audio modifier applied | [optional]
+**mvad_applied** | **float** | Intensity modifier applied | [optional]
+**mod_formula** | **string** | Modifier formula | [optional]
+**mac_details** | **array<string,mixed>[]** | MAC details | [optional]
+**calibration_reason** | **string** | Calibration reason | [optional]
+**final_score** | **float** | Final score | [optional]
+**final_score_formula** | **string** | Final score formula | [optional]
+**conversation_limit** | **mixed** | Conversation limit | [optional]
+**apply_saturation** | **bool** | Apply saturation | [optional]
+**block_repetition** | **bool** | Block repetition | [optional]
+**status** | **string** | Status | [optional]
+**effective_impact** | **float** | Effective impact | [optional]
+**saturation_factor** | **float** | Saturation factor | [optional]
+**saturation_formula** | **string** | Saturation formula | [optional]
+**threshold_formula** | **string** | Threshold formula | [optional]
+**blocked_formula** | **string** | Blocked formula | [optional]
+**reconciliation_note** | **string** | Reconciliation note | [optional]
+**violated_frameworks** | **mixed[]** | Violated frameworks | [optional]
+**citation_fidelity** | **bool** | Citation fidelity | [optional] [default to true]
+**subcategory** | **string** | Subcategory code | [optional]
+**subcategory_label** | **string** | Subcategory label (i18n) | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

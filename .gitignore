@@ -1,0 +1,5 @@
+/vendor/
+composer.lock
+tests/e2e/logs/
+*.bak
+.phpunit.result.cache
