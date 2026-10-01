@@ -44,12 +44,8 @@ final class ContractTest extends TestCase
 
     public function testExemplosExistem(): void
     {
-        $ex = self::ROOT . '/app/static/examples';
-        foreach ([
-            'curl/transcribe.sh', 'python/transcribe.py', 'nodejs/transcribe.js',
-            'curl/auditoria_risco.sh', 'python/auditoria_risco.py', 'nodejs/auditoria_risco.js',
-            'curl/diagnostic.sh', 'python/diagnostic.py', 'nodejs/diagnostic.js',
-        ] as $f) {
+        $ex = self::ROOT . '/sdks/php/examples';
+        foreach (['transcribe.php', 'diagnose.php', 'audit.php', 'health.php'] as $f) {
             $this->assertFileExists($ex . '/' . $f, $f);
         }
     }

@@ -2,14 +2,14 @@
 
 
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://api01-falaai.action.tec.br, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createEmailAlertV1EmailAlertsPost()**](EmailAlertsApi.md#createEmailAlertV1EmailAlertsPost) | **POST** /v1/email-alerts | Criar email de alerta |
-| [**deleteEmailAlertV1EmailAlertsAlertIdDelete()**](EmailAlertsApi.md#deleteEmailAlertV1EmailAlertsAlertIdDelete) | **DELETE** /v1/email-alerts/{alert_id} | Remover email de alerta |
-| [**listEmailAlertsV1EmailAlertsGet()**](EmailAlertsApi.md#listEmailAlertsV1EmailAlertsGet) | **GET** /v1/email-alerts | Listar emails de alerta |
-| [**updateEmailAlertV1EmailAlertsAlertIdPut()**](EmailAlertsApi.md#updateEmailAlertV1EmailAlertsAlertIdPut) | **PUT** /v1/email-alerts/{alert_id} | Atualizar email de alerta |
+| [**createEmailAlertV1EmailAlertsPost()**](EmailAlertsApi.md#createEmailAlertV1EmailAlertsPost) | **POST** /v1/email-alerts | Create email alert |
+| [**deleteEmailAlertV1EmailAlertsAlertIdDelete()**](EmailAlertsApi.md#deleteEmailAlertV1EmailAlertsAlertIdDelete) | **DELETE** /v1/email-alerts/{alert_id} | Delete email alert |
+| [**listEmailAlertsV1EmailAlertsGet()**](EmailAlertsApi.md#listEmailAlertsV1EmailAlertsGet) | **GET** /v1/email-alerts | List email alerts |
+| [**updateEmailAlertV1EmailAlertsAlertIdPut()**](EmailAlertsApi.md#updateEmailAlertV1EmailAlertsAlertIdPut) | **PUT** /v1/email-alerts/{alert_id} | Update email alert |
 
 
 ## `createEmailAlertV1EmailAlertsPost()`
@@ -18,7 +18,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 createEmailAlertV1EmailAlertsPost($create_email_alert_request): \FalaAI\Model\EmailAlertItem
 ```
 
-Criar email de alerta
+Create email alert
 
 ### Example
 
@@ -76,7 +76,7 @@ try {
 deleteEmailAlertV1EmailAlertsAlertIdDelete($alert_id): \FalaAI\Model\EmailAlertMessageResponse
 ```
 
-Remover email de alerta
+Delete email alert
 
 ### Example
 
@@ -134,7 +134,7 @@ try {
 listEmailAlertsV1EmailAlertsGet($page, $limit): \FalaAI\Model\EmailAlertListResponse
 ```
 
-Listar emails de alerta
+List email alerts
 
 ### Example
 
@@ -194,7 +194,7 @@ try {
 updateEmailAlertV1EmailAlertsAlertIdPut($alert_id, $update_email_alert_request): \FalaAI\Model\EmailAlertMessageResponse
 ```
 
-Atualizar email de alerta
+Update email alert
 
 ### Example
 

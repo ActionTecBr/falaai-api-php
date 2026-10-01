@@ -1,0 +1,5 @@
+# Packagist dist = git archive (respeita export-ignore). Nao publicar dev/test.
+/tests export-ignore
+/examples export-ignore
+/phpunit.xml export-ignore
+/.php-cs-fixer.dist.php export-ignore

@@ -2,14 +2,14 @@
 
 
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://api01-falaai.action.tec.br, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createWebhookV1WebhooksPost()**](WebhooksApi.md#createWebhookV1WebhooksPost) | **POST** /v1/webhooks | Criar webhook de alertas |
-| [**deleteWebhookV1WebhooksWebhookIdDelete()**](WebhooksApi.md#deleteWebhookV1WebhooksWebhookIdDelete) | **DELETE** /v1/webhooks/{webhook_id} | Remover webhook |
-| [**listWebhooksV1WebhooksGet()**](WebhooksApi.md#listWebhooksV1WebhooksGet) | **GET** /v1/webhooks | Listar webhooks de alertas |
-| [**updateWebhookV1WebhooksWebhookIdPut()**](WebhooksApi.md#updateWebhookV1WebhooksWebhookIdPut) | **PUT** /v1/webhooks/{webhook_id} | Atualizar webhook |
+| [**createWebhookV1WebhooksPost()**](WebhooksApi.md#createWebhookV1WebhooksPost) | **POST** /v1/webhooks | Create webhook |
+| [**deleteWebhookV1WebhooksWebhookIdDelete()**](WebhooksApi.md#deleteWebhookV1WebhooksWebhookIdDelete) | **DELETE** /v1/webhooks/{webhook_id} | Delete webhook |
+| [**listWebhooksV1WebhooksGet()**](WebhooksApi.md#listWebhooksV1WebhooksGet) | **GET** /v1/webhooks | List webhooks |
+| [**updateWebhookV1WebhooksWebhookIdPut()**](WebhooksApi.md#updateWebhookV1WebhooksWebhookIdPut) | **PUT** /v1/webhooks/{webhook_id} | Update webhook |
 
 
 ## `createWebhookV1WebhooksPost()`
@@ -18,9 +18,9 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 createWebhookV1WebhooksPost($create_webhook_request): \FalaAI\Model\WebhookItem
 ```
 
-Criar webhook de alertas
+Create webhook
 
-Cria inscricao para eventos de alerta (10 alertas). Payload enviado: WebhookPayload(event, data, timestamp) com HMAC FalaAI-Signature. Para comprovar a origem, recalcule HMAC-SHA256 de \"timestamp.body\" com seu secret (exemplos: /examples/download/python.zip e nodejs.zip, arquivo webhook_verify).
+Creates a subscription for alert events (10 alerts). Payload delivered: WebhookPayload(event, data, timestamp) with HMAC FalaAI-Signature. To verify the origin, recompute HMAC-SHA256 of \"timestamp.body\" with your secret.
 
 ### Example
 
@@ -78,9 +78,9 @@ try {
 deleteWebhookV1WebhooksWebhookIdDelete($webhook_id): \FalaAI\Model\MessageResponse
 ```
 
-Remover webhook
+Delete webhook
 
-Remove inscricao de webhook por ID.
+Deletes a webhook subscription by ID.
 
 ### Example
 
@@ -138,9 +138,9 @@ try {
 listWebhooksV1WebhooksGet($page, $limit): \FalaAI\Model\WebhookListResponse
 ```
 
-Listar webhooks de alertas
+List webhooks
 
-Lista webhooks do usuario autenticado (10 alertas). Paginado. Inclui o secret da assinatura da URL (sempre visivel ao dono).
+Lists the authenticated user's webhooks (10 alerts). Paginated. Includes the URL signature secret (always visible to the owner).
 
 ### Example
 
@@ -200,9 +200,9 @@ try {
 updateWebhookV1WebhooksWebhookIdPut($webhook_id, $update_webhook_request): \FalaAI\Model\MessageResponse
 ```
 
-Atualizar webhook
+Update webhook
 
-Atualiza name/url/events/retry_enabled/active do webhook. Eventos validos: 10 alertas.
+Updates the webhook's name/url/events/retry_enabled/active. Valid events: 10 alerts.
 
 ### Example
 

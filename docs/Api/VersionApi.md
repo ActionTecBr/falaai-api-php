@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://api01-falaai.action.tec.br, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -24,15 +24,11 @@ Get Version
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer (fai_xxx) authorization: ApiKeyAuth
-$config = FalaAI\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 $apiInstance = new FalaAI\Api\VersionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 
 try {
@@ -53,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 

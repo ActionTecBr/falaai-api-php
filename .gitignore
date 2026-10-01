@@ -1,5 +1,8 @@
 /vendor/
 composer.lock
 tests/e2e/logs/
+tests/e2e/run_examples.*
+tests/e2e/run_docker.ps1
+examples/_generate_*.mjs
 *.bak
 .phpunit.result.cache
