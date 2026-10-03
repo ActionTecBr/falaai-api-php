@@ -1,6 +1,6 @@
 # sdks/php/examples - exemplos php (canonicos)
 
-@version 1.4.0 | criado: 30/09/2026 12:45 | atualizado: 30/09/2026 21:27
+@version 1.4.0 | criado: 30/09/2026 12:45 | atualizado: 03/10/2026 00:17
 
 ## O que e
 Os 4 exemplos php (php) dos endpoints da API, EXPORTADOS DA LANDING PAGE (fonte unica
@@ -31,17 +31,17 @@ _generate_php_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 ## Relatorio da ultima execucao
 | Data | Modo | Resultado |
 |------|------|-----------|
-| 30/09/2026 21:27 | verificacao (--check) | OK - 4 exemplos php 100% conforme a landing. |
+| 03/10/2026 00:17 | verificacao (--check) | OK - 4 exemplos php 100% conforme a landing. |
 
 | Arquivo | Endpoint | Status | Gerado em |
 |---------|----------|--------|-----------|
-| health.php | GET  /v1/health | ok | 30/09/2026 21:14 |
-| transcribe.php | POST /v1/audio/transcriptions | ok | 30/09/2026 21:14 |
-| diagnose.php | POST /v1/analyze/diagnostic | ok | 30/09/2026 21:14 |
-| audit.php | POST /v1/analyze/riskAudit | ok | 30/09/2026 21:14 |
+| health.php | GET  /v1/health | ok | 02/10/2026 23:53 |
+| transcribe.php | POST /v1/audio/transcriptions | ok | 02/10/2026 23:53 |
+| diagnose.php | POST /v1/analyze/diagnostic | ok | 02/10/2026 23:53 |
+| audit.php | POST /v1/analyze/riskAudit | ok | 02/10/2026 23:53 |
 
 ## Datas
 - Criacao:     30/09/2026 12:45
-- Atualizacao: 30/09/2026 21:27
+- Atualizacao: 03/10/2026 00:17
 
 Gerado automaticamente por _generate_php_examples.mjs - NAO edite a mao.
