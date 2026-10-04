@@ -1,6 +1,6 @@
 <?php
 /**
- * RiskAuditIndexerV2
+ * WhatsappSpeaker
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \FalaAI\ObjectSerializer;
 
 /**
- * RiskAuditIndexerV2 Class Doc Comment
+ * WhatsappSpeaker Class Doc Comment
  *
  * @category Class
  * @package  FalaAI
@@ -40,7 +40,7 @@ use \FalaAI\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappSpeaker implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @var string
      */
-    protected static $openAPIModelName = 'RiskAuditIndexerV2';
+    protected static $openAPIModelName = 'WhatsappSpeaker';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'suggested_terms_for_bank' => 'array<string,mixed>[]'
+        'label' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'suggested_terms_for_bank' => null
+        'label' => null,
+        'name' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'suggested_terms_for_bank' => false
+        'label' => false,
+        'name' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'suggested_terms_for_bank' => 'suggested_terms_for_bank'
+        'label' => 'label',
+        'name' => 'name'
     ];
 
     /**
@@ -175,7 +179,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'suggested_terms_for_bank' => 'setSuggestedTermsForBank'
+        'label' => 'setLabel',
+        'name' => 'setName'
     ];
 
     /**
@@ -184,7 +189,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'suggested_terms_for_bank' => 'getSuggestedTermsForBank'
+        'label' => 'getLabel',
+        'name' => 'getName'
     ];
 
     /**
@@ -244,7 +250,8 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suggested_terms_for_bank', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -274,6 +281,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -290,28 +303,55 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets suggested_terms_for_bank
+     * Gets label
      *
-     * @return array<string,mixed>[]|null
+     * @return string
      */
-    public function getSuggestedTermsForBank()
+    public function getLabel()
     {
-        return $this->container['suggested_terms_for_bank'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets suggested_terms_for_bank
+     * Sets label
      *
-     * @param array<string,mixed>[]|null $suggested_terms_for_bank Suggested terms for bank
+     * @param string $label Speaker label (e.g. 'Speaker 1')
      *
      * @return self
      */
-    public function setSuggestedTermsForBank($suggested_terms_for_bank)
+    public function setLabel($label)
     {
-        if (is_null($suggested_terms_for_bank)) {
-            throw new \InvalidArgumentException('non-nullable suggested_terms_for_bank cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['suggested_terms_for_bank'] = $suggested_terms_for_bank;
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Participant name from the export
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * HealthApi
+ * WhatsappApi
  * PHP version 8.1
  *
  * @category Class
@@ -43,14 +43,14 @@ use FalaAI\HeaderSelector;
 use FalaAI\ObjectSerializer;
 
 /**
- * HealthApi Class Doc Comment
+ * WhatsappApi Class Doc Comment
  *
  * @category Class
  * @package  FalaAI
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class HealthApi
+class WhatsappApi
 {
     /**
      * @var ClientInterface
@@ -74,11 +74,8 @@ class HealthApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'healthCheck' => [
-            'application/json',
-        ],
-        'healthCheckHead' => [
-            'application/json',
+        'extractConversationsV1WhatsappExtractConversationsPost' => [
+            'multipart/form-data',
         ],
     ];
 
@@ -129,36 +126,54 @@ class HealthApi
     }
 
     /**
-     * Operation healthCheck
+     * Operation extractConversationsV1WhatsappExtractConversationsPost
      *
-     * Health Check
+     * Extract and segment WhatsApp conversations from an export
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheck'] to see the possible values for this operation
+     * @param  \SplFileObject $file file (required)
+     * @param  string $start start (required)
+     * @param  string $end end (required)
+     * @param  string $timezone timezone (required)
+     * @param  string $date_format date_format (required)
+     * @param  float|null $gap_minutes gap_minutes (optional, default to 720)
+     * @param  int|null $min_messages min_messages (optional, default to 2)
+     * @param  float|null $chars_per_minute chars_per_minute (optional, default to 800)
+     * @param  string|null $client_reference_id client_reference_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'] to see the possible values for this operation
      *
      * @throws \FalaAI\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FalaAI\Model\HealthResponse
+     * @return \FalaAI\Model\WhatsappConversationsResponse|\FalaAI\Model\HTTPValidationError
      */
-    public function healthCheck(string $contentType = self::contentTypes['healthCheck'][0])
+    public function extractConversationsV1WhatsappExtractConversationsPost($file, $start, $end, $timezone, $date_format, $gap_minutes = 720, $min_messages = 2, $chars_per_minute = 800, $client_reference_id = null, string $contentType = self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'][0])
     {
-        list($response) = $this->healthCheckWithHttpInfo($contentType);
+        list($response) = $this->extractConversationsV1WhatsappExtractConversationsPostWithHttpInfo($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $chars_per_minute, $client_reference_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation healthCheckWithHttpInfo
+     * Operation extractConversationsV1WhatsappExtractConversationsPostWithHttpInfo
      *
-     * Health Check
+     * Extract and segment WhatsApp conversations from an export
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheck'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $start (required)
+     * @param  string $end (required)
+     * @param  string $timezone (required)
+     * @param  string $date_format (required)
+     * @param  float|null $gap_minutes (optional, default to 720)
+     * @param  int|null $min_messages (optional, default to 2)
+     * @param  float|null $chars_per_minute (optional, default to 800)
+     * @param  string|null $client_reference_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'] to see the possible values for this operation
      *
      * @throws \FalaAI\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FalaAI\Model\HealthResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FalaAI\Model\WhatsappConversationsResponse|\FalaAI\Model\HTTPValidationError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function healthCheckWithHttpInfo(string $contentType = self::contentTypes['healthCheck'][0])
+    public function extractConversationsV1WhatsappExtractConversationsPostWithHttpInfo($file, $start, $end, $timezone, $date_format, $gap_minutes = 720, $min_messages = 2, $chars_per_minute = 800, $client_reference_id = null, string $contentType = self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'][0])
     {
-        $request = $this->healthCheckRequest($contentType);
+        $request = $this->extractConversationsV1WhatsappExtractConversationsPostRequest($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $chars_per_minute, $client_reference_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -186,7 +201,13 @@ class HealthApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\FalaAI\Model\HealthResponse',
+                        '\FalaAI\Model\WhatsappConversationsResponse',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\FalaAI\Model\HTTPValidationError',
                         $request,
                         $response,
                     );
@@ -208,7 +229,7 @@ class HealthApi
             }
 
             return $this->handleResponseWithDataType(
-                '\FalaAI\Model\HealthResponse',
+                '\FalaAI\Model\WhatsappConversationsResponse',
                 $request,
                 $response,
             );
@@ -217,7 +238,15 @@ class HealthApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FalaAI\Model\HealthResponse',
+                        '\FalaAI\Model\WhatsappConversationsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FalaAI\Model\HTTPValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,18 +259,27 @@ class HealthApi
     }
 
     /**
-     * Operation healthCheckAsync
+     * Operation extractConversationsV1WhatsappExtractConversationsPostAsync
      *
-     * Health Check
+     * Extract and segment WhatsApp conversations from an export
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheck'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $start (required)
+     * @param  string $end (required)
+     * @param  string $timezone (required)
+     * @param  string $date_format (required)
+     * @param  float|null $gap_minutes (optional, default to 720)
+     * @param  int|null $min_messages (optional, default to 2)
+     * @param  float|null $chars_per_minute (optional, default to 800)
+     * @param  string|null $client_reference_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function healthCheckAsync(string $contentType = self::contentTypes['healthCheck'][0])
+    public function extractConversationsV1WhatsappExtractConversationsPostAsync($file, $start, $end, $timezone, $date_format, $gap_minutes = 720, $min_messages = 2, $chars_per_minute = 800, $client_reference_id = null, string $contentType = self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'][0])
     {
-        return $this->healthCheckAsyncWithHttpInfo($contentType)
+        return $this->extractConversationsV1WhatsappExtractConversationsPostAsyncWithHttpInfo($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $chars_per_minute, $client_reference_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -250,19 +288,28 @@ class HealthApi
     }
 
     /**
-     * Operation healthCheckAsyncWithHttpInfo
+     * Operation extractConversationsV1WhatsappExtractConversationsPostAsyncWithHttpInfo
      *
-     * Health Check
+     * Extract and segment WhatsApp conversations from an export
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheck'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $start (required)
+     * @param  string $end (required)
+     * @param  string $timezone (required)
+     * @param  string $date_format (required)
+     * @param  float|null $gap_minutes (optional, default to 720)
+     * @param  int|null $min_messages (optional, default to 2)
+     * @param  float|null $chars_per_minute (optional, default to 800)
+     * @param  string|null $client_reference_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function healthCheckAsyncWithHttpInfo(string $contentType = self::contentTypes['healthCheck'][0])
+    public function extractConversationsV1WhatsappExtractConversationsPostAsyncWithHttpInfo($file, $start, $end, $timezone, $date_format, $gap_minutes = 720, $min_messages = 2, $chars_per_minute = 800, $client_reference_id = null, string $contentType = self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'][0])
     {
-        $returnType = '\FalaAI\Model\HealthResponse';
-        $request = $this->healthCheckRequest($contentType);
+        $returnType = '\FalaAI\Model\WhatsappConversationsResponse';
+        $request = $this->extractConversationsV1WhatsappExtractConversationsPostRequest($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $chars_per_minute, $client_reference_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -301,18 +348,66 @@ class HealthApi
     }
 
     /**
-     * Create request for operation 'healthCheck'
+     * Create request for operation 'extractConversationsV1WhatsappExtractConversationsPost'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheck'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $start (required)
+     * @param  string $end (required)
+     * @param  string $timezone (required)
+     * @param  string $date_format (required)
+     * @param  float|null $gap_minutes (optional, default to 720)
+     * @param  int|null $min_messages (optional, default to 2)
+     * @param  float|null $chars_per_minute (optional, default to 800)
+     * @param  string|null $client_reference_id (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function healthCheckRequest(string $contentType = self::contentTypes['healthCheck'][0])
+    public function extractConversationsV1WhatsappExtractConversationsPostRequest($file, $start, $end, $timezone, $date_format, $gap_minutes = 720, $min_messages = 2, $chars_per_minute = 800, $client_reference_id = null, string $contentType = self::contentTypes['extractConversationsV1WhatsappExtractConversationsPost'][0])
     {
 
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling extractConversationsV1WhatsappExtractConversationsPost'
+            );
+        }
 
-        $resourcePath = '/v1/health';
+        // verify the required parameter 'start' is set
+        if ($start === null || (is_array($start) && count($start) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start when calling extractConversationsV1WhatsappExtractConversationsPost'
+            );
+        }
+
+        // verify the required parameter 'end' is set
+        if ($end === null || (is_array($end) && count($end) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $end when calling extractConversationsV1WhatsappExtractConversationsPost'
+            );
+        }
+
+        // verify the required parameter 'timezone' is set
+        if ($timezone === null || (is_array($timezone) && count($timezone) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $timezone when calling extractConversationsV1WhatsappExtractConversationsPost'
+            );
+        }
+
+        // verify the required parameter 'date_format' is set
+        if ($date_format === null || (is_array($date_format) && count($date_format) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $date_format when calling extractConversationsV1WhatsappExtractConversationsPost'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/whatsapp/extractConversations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -322,7 +417,25 @@ class HealthApi
 
 
 
+        // form params
+        $formDataProcessor = new FormDataProcessor();
 
+        $formData = $formDataProcessor->prepare([
+            'file' => $file,
+            'start' => $start,
+            'end' => $end,
+            'timezone' => $timezone,
+            'date_format' => $date_format,
+            'gap_minutes' => $gap_minutes,
+            'min_messages' => $min_messages,
+            'chars_per_minute' => $chars_per_minute,
+            'client_reference_id' => $client_reference_id,
+        ]);
+
+        $formParams = $formDataProcessor->flatten($formData);
+        $multipart = $formDataProcessor->has_file;
+
+        $multipart = true;
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', ],
             $contentType,
@@ -358,6 +471,10 @@ class HealthApi
             }
         }
 
+        // this endpoint requires Bearer (fai_xxx) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -373,259 +490,7 @@ class HealthApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation healthCheckHead
-     *
-     * Health Check
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheckHead'] to see the possible values for this operation
-     *
-     * @throws \FalaAI\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \FalaAI\Model\HealthResponse
-     */
-    public function healthCheckHead(string $contentType = self::contentTypes['healthCheckHead'][0])
-    {
-        list($response) = $this->healthCheckHeadWithHttpInfo($contentType);
-        return $response;
-    }
-
-    /**
-     * Operation healthCheckHeadWithHttpInfo
-     *
-     * Health Check
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheckHead'] to see the possible values for this operation
-     *
-     * @throws \FalaAI\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \FalaAI\Model\HealthResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function healthCheckHeadWithHttpInfo(string $contentType = self::contentTypes['healthCheckHead'][0])
-    {
-        $request = $this->healthCheckHeadRequest($contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\FalaAI\Model\HealthResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\FalaAI\Model\HealthResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FalaAI\Model\HealthResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation healthCheckHeadAsync
-     *
-     * Health Check
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheckHead'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function healthCheckHeadAsync(string $contentType = self::contentTypes['healthCheckHead'][0])
-    {
-        return $this->healthCheckHeadAsyncWithHttpInfo($contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation healthCheckHeadAsyncWithHttpInfo
-     *
-     * Health Check
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheckHead'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function healthCheckHeadAsyncWithHttpInfo(string $contentType = self::contentTypes['healthCheckHead'][0])
-    {
-        $returnType = '\FalaAI\Model\HealthResponse';
-        $request = $this->healthCheckHeadRequest($contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'healthCheckHead'
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthCheckHead'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function healthCheckHeadRequest(string $contentType = self::contentTypes['healthCheckHead'][0])
-    {
-
-
-        $resourcePath = '/v1/health';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'HEAD',
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

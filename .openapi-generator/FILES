@@ -11,6 +11,7 @@ docs/Api/SpeechApi.md
 docs/Api/UsageApi.md
 docs/Api/VersionApi.md
 docs/Api/WebhooksApi.md
+docs/Api/WhatsappApi.md
 docs/Model/AudioEvent.md
 docs/Model/AudioInputMeta.md
 docs/Model/CreateEmailAlertRequest.md
@@ -65,6 +66,11 @@ docs/Model/VersionResponse.md
 docs/Model/WebhookEvent.md
 docs/Model/WebhookItem.md
 docs/Model/WebhookListResponse.md
+docs/Model/WhatsappConversation.md
+docs/Model/WhatsappConversationsResponse.md
+docs/Model/WhatsappMeta.md
+docs/Model/WhatsappSpeaker.md
+docs/Model/WhatsappUsage.md
 git_push.sh
 lib/Api/AnalysisApi.php
 lib/Api/EmailAlertsApi.php
@@ -73,6 +79,7 @@ lib/Api/SpeechApi.php
 lib/Api/UsageApi.php
 lib/Api/VersionApi.php
 lib/Api/WebhooksApi.php
+lib/Api/WhatsappApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/FormDataProcessor.php
@@ -132,6 +139,11 @@ lib/Model/VersionResponse.php
 lib/Model/WebhookEvent.php
 lib/Model/WebhookItem.php
 lib/Model/WebhookListResponse.php
+lib/Model/WhatsappConversation.php
+lib/Model/WhatsappConversationsResponse.php
+lib/Model/WhatsappMeta.php
+lib/Model/WhatsappSpeaker.php
+lib/Model/WhatsappUsage.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/AnalysisApiTest.php
@@ -141,6 +153,7 @@ test/Api/SpeechApiTest.php
 test/Api/UsageApiTest.php
 test/Api/VersionApiTest.php
 test/Api/WebhooksApiTest.php
+test/Api/WhatsappApiTest.php
 test/Model/AudioEventTest.php
 test/Model/AudioInputMetaTest.php
 test/Model/CreateEmailAlertRequestTest.php
@@ -195,3 +208,8 @@ test/Model/VersionResponseTest.php
 test/Model/WebhookEventTest.php
 test/Model/WebhookItemTest.php
 test/Model/WebhookListResponseTest.php
+test/Model/WhatsappConversationTest.php
+test/Model/WhatsappConversationsResponseTest.php
+test/Model/WhatsappMetaTest.php
+test/Model/WhatsappSpeakerTest.php
+test/Model/WhatsappUsageTest.php

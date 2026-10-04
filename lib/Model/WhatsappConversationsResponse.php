@@ -1,6 +1,6 @@
 <?php
 /**
- * RiskAuditIndexerV2
+ * WhatsappConversationsResponse
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \FalaAI\ObjectSerializer;
 
 /**
- * RiskAuditIndexerV2 Class Doc Comment
+ * WhatsappConversationsResponse Class Doc Comment
  *
  * @category Class
  * @package  FalaAI
@@ -40,7 +40,7 @@ use \FalaAI\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappConversationsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @var string
      */
-    protected static $openAPIModelName = 'RiskAuditIndexerV2';
+    protected static $openAPIModelName = 'WhatsappConversationsResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'suggested_terms_for_bank' => 'array<string,mixed>[]'
+        'id' => 'string',
+        'object' => 'string',
+        'usage' => '\FalaAI\Model\WhatsappUsage',
+        'conversations' => '\FalaAI\Model\WhatsappConversation[]',
+        'client_reference_id' => 'string',
+        'meta' => '\FalaAI\Model\WhatsappMeta'
     ];
 
     /**
@@ -68,7 +73,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'suggested_terms_for_bank' => null
+        'id' => null,
+        'object' => null,
+        'usage' => null,
+        'conversations' => null,
+        'client_reference_id' => null,
+        'meta' => null
     ];
 
     /**
@@ -77,7 +87,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'suggested_terms_for_bank' => false
+        'id' => false,
+        'object' => false,
+        'usage' => false,
+        'conversations' => false,
+        'client_reference_id' => false,
+        'meta' => false
     ];
 
     /**
@@ -166,7 +181,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'suggested_terms_for_bank' => 'suggested_terms_for_bank'
+        'id' => 'id',
+        'object' => 'object',
+        'usage' => 'usage',
+        'conversations' => 'conversations',
+        'client_reference_id' => 'client_reference_id',
+        'meta' => 'meta'
     ];
 
     /**
@@ -175,7 +195,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'suggested_terms_for_bank' => 'setSuggestedTermsForBank'
+        'id' => 'setId',
+        'object' => 'setObject',
+        'usage' => 'setUsage',
+        'conversations' => 'setConversations',
+        'client_reference_id' => 'setClientReferenceId',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -184,7 +209,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'suggested_terms_for_bank' => 'getSuggestedTermsForBank'
+        'id' => 'getId',
+        'object' => 'getObject',
+        'usage' => 'getUsage',
+        'conversations' => 'getConversations',
+        'client_reference_id' => 'getClientReferenceId',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -244,7 +274,12 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suggested_terms_for_bank', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('usage', $data ?? [], null);
+        $this->setIfExists('conversations', $data ?? [], null);
+        $this->setIfExists('client_reference_id', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
     }
 
     /**
@@ -274,6 +309,21 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['usage'] === null) {
+            $invalidProperties[] = "'usage' can't be null";
+        }
+        if ($this->container['conversations'] === null) {
+            $invalidProperties[] = "'conversations' can't be null";
+        }
+        if ($this->container['meta'] === null) {
+            $invalidProperties[] = "'meta' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -290,28 +340,163 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets suggested_terms_for_bank
+     * Gets id
      *
-     * @return array<string,mixed>[]|null
+     * @return string
      */
-    public function getSuggestedTermsForBank()
+    public function getId()
     {
-        return $this->container['suggested_terms_for_bank'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets suggested_terms_for_bank
+     * Sets id
      *
-     * @param array<string,mixed>[]|null $suggested_terms_for_bank Suggested terms for bank
+     * @param string $id Unique identifier. Prefix 'wc-' + UUID
      *
      * @return self
      */
-    public function setSuggestedTermsForBank($suggested_terms_for_bank)
+    public function setId($id)
     {
-        if (is_null($suggested_terms_for_bank)) {
-            throw new \InvalidArgumentException('non-nullable suggested_terms_for_bank cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['suggested_terms_for_bank'] = $suggested_terms_for_bank;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return string
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string $object Object type. Always 'conversations'
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets usage
+     *
+     * @return \FalaAI\Model\WhatsappUsage
+     */
+    public function getUsage()
+    {
+        return $this->container['usage'];
+    }
+
+    /**
+     * Sets usage
+     *
+     * @param \FalaAI\Model\WhatsappUsage $usage Usage and processing information
+     *
+     * @return self
+     */
+    public function setUsage($usage)
+    {
+        if (is_null($usage)) {
+            throw new \InvalidArgumentException('non-nullable usage cannot be null');
+        }
+        $this->container['usage'] = $usage;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversations
+     *
+     * @return \FalaAI\Model\WhatsappConversation[]
+     */
+    public function getConversations()
+    {
+        return $this->container['conversations'];
+    }
+
+    /**
+     * Sets conversations
+     *
+     * @param \FalaAI\Model\WhatsappConversation[] $conversations Segmented conversations
+     *
+     * @return self
+     */
+    public function setConversations($conversations)
+    {
+        if (is_null($conversations)) {
+            throw new \InvalidArgumentException('non-nullable conversations cannot be null');
+        }
+        $this->container['conversations'] = $conversations;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_reference_id
+     *
+     * @return string|null
+     */
+    public function getClientReferenceId()
+    {
+        return $this->container['client_reference_id'];
+    }
+
+    /**
+     * Sets client_reference_id
+     *
+     * @param string|null $client_reference_id Client-supplied ID echoed verbatim (if provided)
+     *
+     * @return self
+     */
+    public function setClientReferenceId($client_reference_id)
+    {
+        if (is_null($client_reference_id)) {
+            throw new \InvalidArgumentException('non-nullable client_reference_id cannot be null');
+        }
+        $this->container['client_reference_id'] = $client_reference_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \FalaAI\Model\WhatsappMeta
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \FalaAI\Model\WhatsappMeta $meta Segmentation parameters and counts
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
 
         return $this;
     }

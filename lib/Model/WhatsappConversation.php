@@ -1,6 +1,6 @@
 <?php
 /**
- * RiskAuditIndexerV2
+ * WhatsappConversation
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \FalaAI\ObjectSerializer;
 
 /**
- * RiskAuditIndexerV2 Class Doc Comment
+ * WhatsappConversation Class Doc Comment
  *
  * @category Class
  * @package  FalaAI
@@ -40,7 +40,7 @@ use \FalaAI\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappConversation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @var string
      */
-    protected static $openAPIModelName = 'RiskAuditIndexerV2';
+    protected static $openAPIModelName = 'WhatsappConversation';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'suggested_terms_for_bank' => 'array<string,mixed>[]'
+        'conversation_id' => 'string',
+        'first_at' => 'string',
+        'last_at' => 'string',
+        'duration_seconds' => 'float',
+        'speakers' => '\FalaAI\Model\WhatsappSpeaker[]',
+        'dialog' => 'string',
+        'message_count' => 'int',
+        'characters' => 'int'
     ];
 
     /**
@@ -68,7 +75,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'suggested_terms_for_bank' => null
+        'conversation_id' => null,
+        'first_at' => null,
+        'last_at' => null,
+        'duration_seconds' => null,
+        'speakers' => null,
+        'dialog' => null,
+        'message_count' => null,
+        'characters' => null
     ];
 
     /**
@@ -77,7 +91,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'suggested_terms_for_bank' => false
+        'conversation_id' => false,
+        'first_at' => false,
+        'last_at' => false,
+        'duration_seconds' => false,
+        'speakers' => false,
+        'dialog' => false,
+        'message_count' => false,
+        'characters' => false
     ];
 
     /**
@@ -166,7 +187,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'suggested_terms_for_bank' => 'suggested_terms_for_bank'
+        'conversation_id' => 'conversation_id',
+        'first_at' => 'first_at',
+        'last_at' => 'last_at',
+        'duration_seconds' => 'duration_seconds',
+        'speakers' => 'speakers',
+        'dialog' => 'dialog',
+        'message_count' => 'message_count',
+        'characters' => 'characters'
     ];
 
     /**
@@ -175,7 +203,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'suggested_terms_for_bank' => 'setSuggestedTermsForBank'
+        'conversation_id' => 'setConversationId',
+        'first_at' => 'setFirstAt',
+        'last_at' => 'setLastAt',
+        'duration_seconds' => 'setDurationSeconds',
+        'speakers' => 'setSpeakers',
+        'dialog' => 'setDialog',
+        'message_count' => 'setMessageCount',
+        'characters' => 'setCharacters'
     ];
 
     /**
@@ -184,7 +219,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'suggested_terms_for_bank' => 'getSuggestedTermsForBank'
+        'conversation_id' => 'getConversationId',
+        'first_at' => 'getFirstAt',
+        'last_at' => 'getLastAt',
+        'duration_seconds' => 'getDurationSeconds',
+        'speakers' => 'getSpeakers',
+        'dialog' => 'getDialog',
+        'message_count' => 'getMessageCount',
+        'characters' => 'getCharacters'
     ];
 
     /**
@@ -244,7 +286,14 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suggested_terms_for_bank', $data ?? [], null);
+        $this->setIfExists('conversation_id', $data ?? [], null);
+        $this->setIfExists('first_at', $data ?? [], null);
+        $this->setIfExists('last_at', $data ?? [], null);
+        $this->setIfExists('duration_seconds', $data ?? [], null);
+        $this->setIfExists('speakers', $data ?? [], null);
+        $this->setIfExists('dialog', $data ?? [], null);
+        $this->setIfExists('message_count', $data ?? [], null);
+        $this->setIfExists('characters', $data ?? [], null);
     }
 
     /**
@@ -274,6 +323,30 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['conversation_id'] === null) {
+            $invalidProperties[] = "'conversation_id' can't be null";
+        }
+        if ($this->container['first_at'] === null) {
+            $invalidProperties[] = "'first_at' can't be null";
+        }
+        if ($this->container['last_at'] === null) {
+            $invalidProperties[] = "'last_at' can't be null";
+        }
+        if ($this->container['duration_seconds'] === null) {
+            $invalidProperties[] = "'duration_seconds' can't be null";
+        }
+        if ($this->container['speakers'] === null) {
+            $invalidProperties[] = "'speakers' can't be null";
+        }
+        if ($this->container['dialog'] === null) {
+            $invalidProperties[] = "'dialog' can't be null";
+        }
+        if ($this->container['message_count'] === null) {
+            $invalidProperties[] = "'message_count' can't be null";
+        }
+        if ($this->container['characters'] === null) {
+            $invalidProperties[] = "'characters' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -290,28 +363,217 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets suggested_terms_for_bank
+     * Gets conversation_id
      *
-     * @return array<string,mixed>[]|null
+     * @return string
      */
-    public function getSuggestedTermsForBank()
+    public function getConversationId()
     {
-        return $this->container['suggested_terms_for_bank'];
+        return $this->container['conversation_id'];
     }
 
     /**
-     * Sets suggested_terms_for_bank
+     * Sets conversation_id
      *
-     * @param array<string,mixed>[]|null $suggested_terms_for_bank Suggested terms for bank
+     * @param string $conversation_id Conversation identifier in the batch
      *
      * @return self
      */
-    public function setSuggestedTermsForBank($suggested_terms_for_bank)
+    public function setConversationId($conversation_id)
     {
-        if (is_null($suggested_terms_for_bank)) {
-            throw new \InvalidArgumentException('non-nullable suggested_terms_for_bank cannot be null');
+        if (is_null($conversation_id)) {
+            throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
         }
-        $this->container['suggested_terms_for_bank'] = $suggested_terms_for_bank;
+        $this->container['conversation_id'] = $conversation_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets first_at
+     *
+     * @return string
+     */
+    public function getFirstAt()
+    {
+        return $this->container['first_at'];
+    }
+
+    /**
+     * Sets first_at
+     *
+     * @param string $first_at Real start (wall-clock, ISO)
+     *
+     * @return self
+     */
+    public function setFirstAt($first_at)
+    {
+        if (is_null($first_at)) {
+            throw new \InvalidArgumentException('non-nullable first_at cannot be null');
+        }
+        $this->container['first_at'] = $first_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_at
+     *
+     * @return string
+     */
+    public function getLastAt()
+    {
+        return $this->container['last_at'];
+    }
+
+    /**
+     * Sets last_at
+     *
+     * @param string $last_at Real end (wall-clock, ISO)
+     *
+     * @return self
+     */
+    public function setLastAt($last_at)
+    {
+        if (is_null($last_at)) {
+            throw new \InvalidArgumentException('non-nullable last_at cannot be null');
+        }
+        $this->container['last_at'] = $last_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration_seconds
+     *
+     * @return float
+     */
+    public function getDurationSeconds()
+    {
+        return $this->container['duration_seconds'];
+    }
+
+    /**
+     * Sets duration_seconds
+     *
+     * @param float $duration_seconds (last - first) + last turn duration
+     *
+     * @return self
+     */
+    public function setDurationSeconds($duration_seconds)
+    {
+        if (is_null($duration_seconds)) {
+            throw new \InvalidArgumentException('non-nullable duration_seconds cannot be null');
+        }
+        $this->container['duration_seconds'] = $duration_seconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets speakers
+     *
+     * @return \FalaAI\Model\WhatsappSpeaker[]
+     */
+    public function getSpeakers()
+    {
+        return $this->container['speakers'];
+    }
+
+    /**
+     * Sets speakers
+     *
+     * @param \FalaAI\Model\WhatsappSpeaker[] $speakers Speakers of THIS conversation (dynamic)
+     *
+     * @return self
+     */
+    public function setSpeakers($speakers)
+    {
+        if (is_null($speakers)) {
+            throw new \InvalidArgumentException('non-nullable speakers cannot be null');
+        }
+        $this->container['speakers'] = $speakers;
+
+        return $this;
+    }
+
+    /**
+     * Gets dialog
+     *
+     * @return string
+     */
+    public function getDialog()
+    {
+        return $this->container['dialog'];
+    }
+
+    /**
+     * Sets dialog
+     *
+     * @param string $dialog Lines 'Speaker N: [HH:MM:SS.mmm - HH:MM:SS.mmm] text' (real offset)
+     *
+     * @return self
+     */
+    public function setDialog($dialog)
+    {
+        if (is_null($dialog)) {
+            throw new \InvalidArgumentException('non-nullable dialog cannot be null');
+        }
+        $this->container['dialog'] = $dialog;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_count
+     *
+     * @return int
+     */
+    public function getMessageCount()
+    {
+        return $this->container['message_count'];
+    }
+
+    /**
+     * Sets message_count
+     *
+     * @param int $message_count Number of messages
+     *
+     * @return self
+     */
+    public function setMessageCount($message_count)
+    {
+        if (is_null($message_count)) {
+            throw new \InvalidArgumentException('non-nullable message_count cannot be null');
+        }
+        $this->container['message_count'] = $message_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets characters
+     *
+     * @return int
+     */
+    public function getCharacters()
+    {
+        return $this->container['characters'];
+    }
+
+    /**
+     * Sets characters
+     *
+     * @param int $characters Total characters of the conversation
+     *
+     * @return self
+     */
+    public function setCharacters($characters)
+    {
+        if (is_null($characters)) {
+            throw new \InvalidArgumentException('non-nullable characters cannot be null');
+        }
+        $this->container['characters'] = $characters;
 
         return $this;
     }

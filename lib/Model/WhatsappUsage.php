@@ -1,6 +1,6 @@
 <?php
 /**
- * RiskAuditIndexerV2
+ * WhatsappUsage
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \FalaAI\ObjectSerializer;
 
 /**
- * RiskAuditIndexerV2 Class Doc Comment
+ * WhatsappUsage Class Doc Comment
  *
  * @category Class
  * @package  FalaAI
@@ -40,7 +40,7 @@ use \FalaAI\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsappUsage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @var string
      */
-    protected static $openAPIModelName = 'RiskAuditIndexerV2';
+    protected static $openAPIModelName = 'WhatsappUsage';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'suggested_terms_for_bank' => 'array<string,mixed>[]'
+        'conversations' => 'int',
+        'characters' => 'int',
+        'credits_consumed' => 'int',
+        'processing_ms' => 'int'
     ];
 
     /**
@@ -68,7 +71,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'suggested_terms_for_bank' => null
+        'conversations' => null,
+        'characters' => null,
+        'credits_consumed' => null,
+        'processing_ms' => null
     ];
 
     /**
@@ -77,7 +83,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'suggested_terms_for_bank' => false
+        'conversations' => false,
+        'characters' => false,
+        'credits_consumed' => false,
+        'processing_ms' => false
     ];
 
     /**
@@ -166,7 +175,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'suggested_terms_for_bank' => 'suggested_terms_for_bank'
+        'conversations' => 'conversations',
+        'characters' => 'characters',
+        'credits_consumed' => 'credits_consumed',
+        'processing_ms' => 'processing_ms'
     ];
 
     /**
@@ -175,7 +187,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'suggested_terms_for_bank' => 'setSuggestedTermsForBank'
+        'conversations' => 'setConversations',
+        'characters' => 'setCharacters',
+        'credits_consumed' => 'setCreditsConsumed',
+        'processing_ms' => 'setProcessingMs'
     ];
 
     /**
@@ -184,7 +199,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'suggested_terms_for_bank' => 'getSuggestedTermsForBank'
+        'conversations' => 'getConversations',
+        'characters' => 'getCharacters',
+        'credits_consumed' => 'getCreditsConsumed',
+        'processing_ms' => 'getProcessingMs'
     ];
 
     /**
@@ -244,7 +262,10 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('suggested_terms_for_bank', $data ?? [], null);
+        $this->setIfExists('conversations', $data ?? [], null);
+        $this->setIfExists('characters', $data ?? [], null);
+        $this->setIfExists('credits_consumed', $data ?? [], null);
+        $this->setIfExists('processing_ms', $data ?? [], null);
     }
 
     /**
@@ -274,6 +295,18 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['conversations'] === null) {
+            $invalidProperties[] = "'conversations' can't be null";
+        }
+        if ($this->container['characters'] === null) {
+            $invalidProperties[] = "'characters' can't be null";
+        }
+        if ($this->container['credits_consumed'] === null) {
+            $invalidProperties[] = "'credits_consumed' can't be null";
+        }
+        if ($this->container['processing_ms'] === null) {
+            $invalidProperties[] = "'processing_ms' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -290,28 +323,109 @@ class RiskAuditIndexerV2 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets suggested_terms_for_bank
+     * Gets conversations
      *
-     * @return array<string,mixed>[]|null
+     * @return int
      */
-    public function getSuggestedTermsForBank()
+    public function getConversations()
     {
-        return $this->container['suggested_terms_for_bank'];
+        return $this->container['conversations'];
     }
 
     /**
-     * Sets suggested_terms_for_bank
+     * Sets conversations
      *
-     * @param array<string,mixed>[]|null $suggested_terms_for_bank Suggested terms for bank
+     * @param int $conversations Number of conversations returned
      *
      * @return self
      */
-    public function setSuggestedTermsForBank($suggested_terms_for_bank)
+    public function setConversations($conversations)
     {
-        if (is_null($suggested_terms_for_bank)) {
-            throw new \InvalidArgumentException('non-nullable suggested_terms_for_bank cannot be null');
+        if (is_null($conversations)) {
+            throw new \InvalidArgumentException('non-nullable conversations cannot be null');
         }
-        $this->container['suggested_terms_for_bank'] = $suggested_terms_for_bank;
+        $this->container['conversations'] = $conversations;
+
+        return $this;
+    }
+
+    /**
+     * Gets characters
+     *
+     * @return int
+     */
+    public function getCharacters()
+    {
+        return $this->container['characters'];
+    }
+
+    /**
+     * Sets characters
+     *
+     * @param int $characters Total characters across conversations
+     *
+     * @return self
+     */
+    public function setCharacters($characters)
+    {
+        if (is_null($characters)) {
+            throw new \InvalidArgumentException('non-nullable characters cannot be null');
+        }
+        $this->container['characters'] = $characters;
+
+        return $this;
+    }
+
+    /**
+     * Gets credits_consumed
+     *
+     * @return int
+     */
+    public function getCreditsConsumed()
+    {
+        return $this->container['credits_consumed'];
+    }
+
+    /**
+     * Sets credits_consumed
+     *
+     * @param int $credits_consumed Credits consumed (1 per conversation)
+     *
+     * @return self
+     */
+    public function setCreditsConsumed($credits_consumed)
+    {
+        if (is_null($credits_consumed)) {
+            throw new \InvalidArgumentException('non-nullable credits_consumed cannot be null');
+        }
+        $this->container['credits_consumed'] = $credits_consumed;
+
+        return $this;
+    }
+
+    /**
+     * Gets processing_ms
+     *
+     * @return int
+     */
+    public function getProcessingMs()
+    {
+        return $this->container['processing_ms'];
+    }
+
+    /**
+     * Sets processing_ms
+     *
+     * @param int $processing_ms Total processing time in milliseconds
+     *
+     * @return self
+     */
+    public function setProcessingMs($processing_ms)
+    {
+        if (is_null($processing_ms)) {
+            throw new \InvalidArgumentException('non-nullable processing_ms cannot be null');
+        }
+        $this->container['processing_ms'] = $processing_ms;
 
         return $this;
     }
