@@ -36,8 +36,8 @@ $apiInstance = new FalaAI\Api\SpeechApi(
 );
 $file = '/path/to/file.txt'; // \SplFileObject
 $model = 'falaai-transcribe-1'; // string
-$language = 'pt'; // string
-$client_reference_id = 'client_reference_id_example'; // string | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9._:-]. Not idempotency.
+$language = 'language_example'; // string
+$client_reference_id = 'client_reference_id_example'; // string | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9 _/:.-], max 60 chars. Not idempotency.
 
 try {
     $result = $apiInstance->createTranscriptionV1AudioTranscriptionsPost($file, $model, $language, $client_reference_id);
@@ -53,8 +53,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **file** | **\SplFileObject****\SplFileObject**|  | |
 | **model** | **string**|  | [optional] [default to &#39;falaai-transcribe-1&#39;] |
-| **language** | **string**|  | [optional] [default to &#39;pt&#39;] |
-| **client_reference_id** | **string**| Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9._:-]. Not idempotency. | [optional] |
+| **language** | **string**|  | [optional] |
+| **client_reference_id** | **string**| Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9 _/:.-], max 60 chars. Not idempotency. | [optional] |
 
 ### Return type
 

@@ -12,7 +12,7 @@ All URIs are relative to https://api01-falaai.action.tec.br, except if the opera
 ## `extractConversationsV1WhatsappExtractConversationsPost()`
 
 ```php
-extractConversationsV1WhatsappExtractConversationsPost($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $chars_per_minute, $client_reference_id): \FalaAI\Model\WhatsappConversationsResponse
+extractConversationsV1WhatsappExtractConversationsPost($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $voice_note, $expression, $client_reference_id): \FalaAI\Model\WhatsappConversationsResponse
 ```
 
 Extract and segment WhatsApp conversations from an export
@@ -41,11 +41,12 @@ $timezone = 'timezone_example'; // string
 $date_format = 'date_format_example'; // string
 $gap_minutes = 720; // float
 $min_messages = 2; // int
-$chars_per_minute = 800; // float
+$voice_note = true; // bool | Transcrever mensagens de voz/video gravadas na hora?
+$expression = true; // bool | Descrever expressoes visuais (figurinha/GIF/imagem)?
 $client_reference_id = 'client_reference_id_example'; // string
 
 try {
-    $result = $apiInstance->extractConversationsV1WhatsappExtractConversationsPost($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $chars_per_minute, $client_reference_id);
+    $result = $apiInstance->extractConversationsV1WhatsappExtractConversationsPost($file, $start, $end, $timezone, $date_format, $gap_minutes, $min_messages, $voice_note, $expression, $client_reference_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WhatsappApi->extractConversationsV1WhatsappExtractConversationsPost: ', $e->getMessage(), PHP_EOL;
@@ -63,7 +64,8 @@ try {
 | **date_format** | **string**|  | |
 | **gap_minutes** | **float**|  | [optional] [default to 720] |
 | **min_messages** | **int**|  | [optional] [default to 2] |
-| **chars_per_minute** | **float**|  | [optional] [default to 800] |
+| **voice_note** | **bool**| Transcrever mensagens de voz/video gravadas na hora? | [optional] [default to true] |
+| **expression** | **bool**| Descrever expressoes visuais (figurinha/GIF/imagem)? | [optional] [default to true] |
 | **client_reference_id** | **string**|  | [optional] |
 
 ### Return type

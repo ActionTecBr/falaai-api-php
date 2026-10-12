@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **analysis** | [**\FalaAI\Model\DiagnosticAnalysisMap**](DiagnosticAnalysisMap.md) | The 6 conversation analyses (5 + participants) |
 **usage** | [**\FalaAI\Model\DiagnosticUsage**](DiagnosticUsage.md) | Usage and processing information |
 **client_reference_id** | **string** | Client-supplied ID echoed verbatim (if provided in request) | [optional]
+**html_report** | **string** | Visual HTML report of the diagnosis (base64 gzip). Only present when &#39;dialog&#39; is provided; null for text-only requests. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

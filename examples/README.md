@@ -1,6 +1,6 @@
 # sdks/php/examples - exemplos php (canonicos)
 
-@version 1.4.0 | criado: 30/09/2026 12:45 | atualizado: 04/10/2026 02:35
+@version 1.4.0 | criado: 30/09/2026 12:45 | atualizado: 12/10/2026 17:00
 
 ## O que e
 Os 4 exemplos php (php) dos endpoints da API, EXPORTADOS DA LANDING PAGE (fonte unica
@@ -31,18 +31,18 @@ _generate_php_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 ## Relatorio da ultima execucao
 | Data | Modo | Resultado |
 |------|------|-----------|
-| 04/10/2026 02:35 | verificacao (--check) | OK - 5 exemplos php 100% conforme a landing. |
+| 12/10/2026 17:00 | verificacao (--check) | OK - 5 exemplos php 100% conforme a landing. |
 
 | Arquivo | Endpoint | Status | Gerado em |
 |---------|----------|--------|-----------|
-| health.php | GET  /v1/health | ok | 04/10/2026 02:23 |
-| transcribe.php | POST /v1/audio/transcriptions | ok | 04/10/2026 02:23 |
-| diagnose.php | POST /v1/analyze/diagnostic | ok | 04/10/2026 02:23 |
-| audit.php | POST /v1/analyze/riskAudit | ok | 04/10/2026 02:23 |
-| whatsapp.php | whatsapp.php | ok | 04/10/2026 02:23 |
+| health.php | GET  /v1/health | ok | 12/10/2026 15:18 |
+| transcribe.php | POST /v1/audio/transcriptions | ok | 12/10/2026 15:18 |
+| diagnose.php | POST /v1/analyze/diagnostic | ok | 12/10/2026 15:18 |
+| audit.php | POST /v1/analyze/riskAudit | ok | 12/10/2026 15:18 |
+| whatsapp.php | whatsapp.php | ok | 12/10/2026 15:18 |
 
 ## Datas
 - Criacao:     30/09/2026 12:45
-- Atualizacao: 04/10/2026 02:35
+- Atualizacao: 12/10/2026 17:00
 
 Gerado automaticamente por _generate_php_examples.mjs - NAO edite a mao.
