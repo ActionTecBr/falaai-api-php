@@ -1,6 +1,6 @@
 # sdks/php/examples - exemplos php (canonicos)
 
-@version 1.4.0 | criado: 30/09/2026 12:45 | atualizado: 12/10/2026 17:00
+@version 1.4.0 | criado: 30/09/2026 12:45 | atualizado: 12/10/2026 17:09
 
 ## O que e
 Os 4 exemplos php (php) dos endpoints da API, EXPORTADOS DA LANDING PAGE (fonte unica
@@ -31,7 +31,7 @@ _generate_php_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 ## Relatorio da ultima execucao
 | Data | Modo | Resultado |
 |------|------|-----------|
-| 12/10/2026 17:00 | verificacao (--check) | OK - 5 exemplos php 100% conforme a landing. |
+| 12/10/2026 17:09 | verificacao (--check) | OK - 5 exemplos php 100% conforme a landing. |
 
 | Arquivo | Endpoint | Status | Gerado em |
 |---------|----------|--------|-----------|
@@ -43,6 +43,6 @@ _generate_php_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 
 ## Datas
 - Criacao:     30/09/2026 12:45
-- Atualizacao: 12/10/2026 17:00
+- Atualizacao: 12/10/2026 17:09
 
 Gerado automaticamente por _generate_php_examples.mjs - NAO edite a mao.
